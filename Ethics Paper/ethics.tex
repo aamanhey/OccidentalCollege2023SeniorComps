@@ -1,0 +1,59 @@
+\documentclass[10pt,twocolumn]{article} 
+
+\usepackage{oxycomps} % use the main oxycomps style file
+\usepackage{mathtools}  % loads »amsmath«
+\usepackage{url} 
+
+\bibliography{references}
+
+\pdfinfo{
+    /Title "Ethical Considerations"
+    /Author (Adrian Manhey)
+}
+
+\title{Ethical Considerations}
+\author{Adrian Manhey}
+\affiliation{Occidental College}
+\email{amanhey@oxy.edu}
+
+\begin{document}
+
+\maketitle
+
+\section{Ethical Considerations}
+
+This project using a Q-learning reinforcement learning algorithm in order to train a Python agent to play stag hunt, a prisoner’s dilemma style game that emphasizes cooperation between agents in order to reach the optimal outcome. In essence, agents are given the option to work independently for a small reward or work cooperatively for a large reward. Developing this technology informs us of methods that may be used to model an agent’s intent recognition \cite{Rabkina2019}, meaning their perception of the decisions intended to be made by other agents. Since this game involves autonomous agent control, long-term decision making, interaction between an agent and their environment, consequences for decisions, and temporal reasoning, it’s a good candidate for reinforcement learning. By making the decision to develop the project using reinforcement learning, I must acknowledge that I am also choosing to develop the field of reinforcement learning, AI research, and contributing to the applications of each.
+
+\subsection{Concentrating Power through Computing Power}
+
+Although reinforcement learning seems to be a good fit for this problem, it is important to consider some of the ethical issues surrounding it, specifically the way that this project may concentrate power through the context of its development and unethical applications. Reinforcement learning algorithms are recommended for problems that do not have pre-gathered data since the agent will gather the data through their trial-and-error experience. If designers aren’t able to access the resources in order to do these computations, a barrier is created between them and the field.
+
+Due to the computational nature of AI research in the current era, where available computing power or compute is doubling at a much faster rate than before, the concern is that only a small group of actors will shape the future of AI \cite{Ahmed2020}. This study looked at 171,394 papers from 57 computer science conferences and concluded that the participation of firms has increased in the form of firm-only published papers and firms collaborating with elite universities. As Benjamin 2021 said during a lecture at Occidental College, there is a “mass consolidation of power in the tech field with a small group of people who set the terms of engagement and enforce a new technocracy instead of a multiracial democracy.” This means that the network of producers of AI research is getting smaller with prominent figures being academic institutions that have long-standing prestige and funds and technology firms, such as Google and Meta, which have the financial resources to attract talent and invest in hardware dedicated to developing AI technologies (i.e. GPU accelerators). Additionally, it suggests that the consolidation of technological power corresponds to a consolidation of social and political power, taking power from individual actors and concentrating it to technologically powerful entities. Meaning that these large entities not only have the power to control the production of technology in the present, but also the sequence of technologies that can be developed from each other.
+
+A prominent example of technologies produced by a large entity are GPT-2 and GPT-3 \cite{Schmelzer2021}. Each are language models released in 2019 and 2020, respectively. Each was built by OpenAi, an AI research and deployment company. According to \cite{Cohen2019} the cloud computing costs alone for GPT-2 cost an estimated \$50,000. Most research research groups outside of large-scale technology companies don’t have the means to afford these kinds of costs, resulting in them being excluded in the development of these or comparable technologies. GPT-2 was notable in many natural language studies that used the technology since it was open-source but it’s successor, GPT-3, who enjoyed a \$1 billion investment from Microsoft to have an exclusive license, charges for its service. This developments demonstrate how once an institution has the means to host computational AI research, they attract more funding and researchers to amass a source of both computational and intellectual power \cite{Knight2018}.
+
+\subsection{Neutrality and Responsibility for Investments}
+
+AI research is guided by the interests of the researcher, so it is essential that the developer make deep considerations about how their technology concentrates or distributes power. In the context of societal discrimination, if there is no avenue for a developing technology to challenge structures of power then it is taking a neutral, if not assistive, position in strengthening the status quo. Developers might want to think themselves existing in a neutral space but in the context of the United States, there is no neutral position. For example, with race there is no middle ground between racist and anti-racist \cite{Kendi2019} because they both root problems to either groups of people or power and policies.
+
+A neutral position only works if those involved are on equal footing or else those that are assuming a neutral position take the side of the advantaged. The advantage doesn’t have to be an explicit advantage either, it can just be that they don’t start at a position of disadvantage. The neutral position assumes the default, which is problematic when the structures of power have created the default to be white. There is a level of culpability when developers partake in what can be called algorithmic consequential exculpation, where the developers feel free of responsibility for the impact of their algorithm. There is a view in the tech field that has become acceptable that glitches are technical problems with the algorithm, not reflections of internalized societal racial, sexual, gender, religious, and class bias and discrimination \cite{Benjamin2020}.
+
+\subsection{Unethical Applications: Military Technologies}
+
+The interests of developers either push developers to make these critical considerations or develop a tool that fails to serve the public interest. By investing in a field that concentrates computing power, there is an investment being made in internalizing bias and discrimination. For some entities that might mean more applications in targeted advertising, while for others it could lead to something far more serious. In science fiction, many of the dangers with AI come in the form of uncontrollable human-killing robots. However, AI technologies can only do what they are trained to do. AI is a tool and a weapon unlike any other that human beings have developed; it will almost certainly allow the already powerful to consolidate their power further \cite{Harari2018}. This is an issue when thinking of major technology companies hoarding computational and intellectual power, but becomes a source of larger concern when considering the use of AI research in the Military Industrial Complex (MIC).
+
+Artificial Intelligence use in the military is of present concern. The capabilities of AI, coupled with complex conflicts like in Libya and Syria, have created situations where AI is killing people. One of the biggest examples has to do with drones, such as “loitering munitions”, drones that use image recognition to autonomously patrol and dive bomb areas \cite{Vynck2021}. Drones such as this have been seen in the current Ukraine-Russia conflict, with loitering drones being used by both sides and other drones, such as Ukraine’s Turkish-made Bayraktar TB2 drones, being used to inhibit the advancement of opposing forces \cite{Vynck2022}. In this context, this technology is a tool for resistance and oppression. When it comes to the development of those technologies, there is difficulty in training since many models require labeled training data, whose labeling is outsourced to companies to be manually labeled, such as Amazon Mechanical Turk. However, much of the data used by militaries are classified, confidential, and/or restricted so the training data becomes hard to acquire.
+
+For certain models a virtual reinforcement environment is an excellent solution since once the actions, space, and rules are specified the data comes from the models progressive experience. Additionally, many militaries have large budgets that either allow access to computationally powerful resources or investments to be made to develop these technologies, such as the United States’ Department of Defense Basic Research program which invests in research to fulfill goals such as “[identifying] emerging research areas of strategic importance to the DoD; maintain support for high-risk, paradigm shifting basic research that may lead to enhanced warfighter capabilities, and strategic and tactical advantage.” (US Research Directorate) When making intellectual investments into projects such as creating a reinforcement learning agent for staghunt, considerations must be made into how those investments are also being made into the fields of reinforcement learning, artificial intelligence, and their applications.
+
+Considering potential applications for staghunt more deeply, Q-learning, at the most basic level, only requires an agent, set of states, set of actions, and a reward function. With those components defined, a reinforcement learning model can be made to complete the required task. Staghunt is a relatively simple game but have been AI models developed to play much more complex games \cite{Shead2018}. As technology progresses, it becomes more feasible to translate real states, such as a battlefield, into those able to be processed by a model. Developments in reinforcement models’ ability to make autonomous decisions over time give way to military abilities such as reacting to targets, real-time mission planning, coordination for robots and UAVs \cite{Strens2001}.
+
+An agent may be developed into representing a drone instead of a hunter, symbolically fulfilling the same purpose of finding and capturing/eliminating the highest-value target it is able to. The action set of staghunt is a 2-dimensional space but a similar layout can be applied to a military robot on the ground which can only move forward, backwards, and rotate. The value function may be defined in terms of rewarding the capture of a person identified by an image recognition algorithm, , chosen at the discretion of the military. As technology becomes more capable, the conversion to military application poses a greater problem as a source for suffering at the hands of military conflict.
+
+\subsection{Accounting for Unethical Investments}
+	
+To account for these investments, it is instrumental for this project to acknowledge the possible misuse of its developments. Unlike OpenAI’s GTP-3 or Five, the scale of this project is quite small, which can mitigate the negative investment made since any investment will be small. The development in this project involves an educational component for the student developing it and an academic component for the model built. Both of these components, in effect, supports marginalized groups gaining intellectual power in the AI and computer science fields, challenging the status quo by providing access to power to groups previously excluded. However, I maintain that the potential for misuse, as in military applications, and supporting the concentration of computing power are prominent ethical concerns for the project and must be considered for any future developments of this project.
+
+\printbibliography 
+
+\end{document}
