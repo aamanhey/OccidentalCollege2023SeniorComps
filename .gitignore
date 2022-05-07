@@ -1,2 +1,8 @@
 
 .DS_Store
+*.aux
+Proposal/document.bcf
+Proposal/document.out
+Proposal/document.log
+Proposal/document.run.xml
+Proposal/document.synctex.gz
