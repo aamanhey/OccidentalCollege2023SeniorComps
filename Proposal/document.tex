@@ -1,0 +1,144 @@
+\documentclass[10pt,twocolumn]{article}
+
+% use the oxycomps style file
+\usepackage{oxycomps}
+
+% additional libraries
+\usepackage{hyperref}
+
+% read references.bib for the bibtex data
+\bibliography{references}
+
+% include metadata in the generated pdf file
+\pdfinfo{
+    /Title (Q-Learning in Shum-Style Stag Hunt)
+    /Author (Adrian Manhey)
+}
+
+% set the title and author information
+\title{Q-Learning in Shum-Style Stag Hunt}
+\author{Adrian Manhey}
+\affiliation{Occidental College}
+\email{amanhey.edu}
+
+\begin{document}
+
+\maketitle
+
+% Introduction
+\section{Introduction and Problem Context}
+
+In the machine learning field, reinforcement learning (RL) has received wide recognition for its ability to solve complex problems, such as a set of Atari games where it achieved superhuman performance in certain games \cite{Volodymyr2013}.
+One of the areas of interest in reinforcement learning is in the application in multi-agent environments, such as stag hunt \cite{Skyrms2001}, a stochastic prisoner’s dilemma-style game where the goal is to accumulate the highest number of points by capturing high-value mobile targets (stags) or low-value static targets (hares).
+The stochastic iterated prisoner’s dilemma is a kind of iterated prisoner’s dilemma game where the strategies of the players are specified in terms of cooperation probabilities \cite{Li2014}.
+In this task, agents control hunters which can hunt stags or hares, but stags require two or more agents to capture them while hares only require one.
+
+% Example Huntspace {Figure 1}
+\begin{figure}[ht]
+\vspace{0.5cm}
+\centering
+\caption{One of the nine stag-hunt scenarios. Circles represent hunters’ position at a given time step. Dotted lines represent motion. Figure adapted from Rabkina et al. (2019).}
+\label{Figure:1}
+\end{figure}
+
+Figure \ref{Figure:1} is an example stag-hunt scenario \cite{Rabkina2019} where a pair of agents (A and B) cooperate to capture a stag and another agent captures a hare individually.
+The circles represent a hunter's position at a given time-stamp and the dotted lines represent movement.
+A key element of this game is the collaboration between agents which can be modeled using various methods.
+One such method is a type of machine learning called Q-learning, which was used as the winning model in the Malmo Collaborative AI Challenge, hosted by Microsoft in 2017, a version of stag hunt where the agent was given two choices: 1) catch the pig by trapping it in a corner and receiving 25 points or 2) giving up and receive 5 points \cite{Katja2017}.
+However, this solutions has limitations in how it could be extended beyond the Pig Chase task since the Q-learning model would need to be retrained for each new task, which is nontrivial, and that the secondary agent would choose either random actions or followed a heuristic search.
+A rendering of the Malmo-Challenge environment can be seen in Figure \ref{Figure:2}.
+
+Two of the solutions to these issues involved using a Bayesian model \cite{Shum2019} and Analogical Theory of Mind (AToM) \cite{Rabkina2019}, each of which will be discussed more in Section \ref{SectionTB}.
+The AToM solution, which is the parent research project to this project, posited that AToM reasoning would allow agents to infer cooperation intentions of other agents and make predictions about other agents' future actions, leading to a model with a higher level of generalizability.
+However, to test this data would need to be collected on the performance of that model in comparison to different implementations, such as a RL model.
+This project aims to create a RL mode for comparison for the AToM model using Q-learning with four additional factors to Pig Chase: 1) replacing the low-reward target of quitting with hares, 2) implementing the game with three hunters, two hares, and two stags, 3) the ability for the secondary agent to seek the low-reward targets and 4) using a 5x7 grid world.
+
+These changes follow the spatial stag-hunt domain from Shum et al.'s model and allow a direct comparison between the two models, as well as data to be collected on human inference of the cooperation of agents.
+In addition to the implementation of the Q-learning model, a reach-goal for the project is to gather data in a small study where participants would view episodes of the model playing stag hunt and inferring whether they perceive the agents cooperating together or not.
+
+\section{Technical Background}
+\label{SectionTB}
+
+The implementation of the Q-learning model will be done with OpenAI's Gym environment, designed for "developing and comparing reinforcement learning algorithms." \cite{GymDocs, Brockman2016}
+This environment provides a set of pre-made environments to reference as well as the ability to create a custom environment.
+Since this Shum-style implementation is a grid-based environment with the only actions being movement in the four cardinal directions, it will have a discrete observable- and action-spaces.
+In the Shum et al. domain there are 9 maps that are used, so the observable-space will change depending on which map is chosen.
+That set must be taken into account so that either the project uses a single map or a set of Q-learning models for different maps.
+The action-space, however, will be consistent throughout each map.
+Additionally, there were only time-steps in the implementation, which will remain true in the implementation of this project.
+
+In terms of the model, a table of state and action pairs $(s, a)$ with an associated Q-value, representing their "quality," will be defined for each maps in the set.
+Q-values are initialized to an arbitrary value and as the agent explores the environment they are updated.
+The method for updating a Q-value consists of two parameters: $\alpha \in (0, 1]$ is the learning rate and $\gamma \in [0, 1]$ is the discount factor, which makes short-term or long-term rewards more valuable \cite{Kaelbling1996}.
+The equation for this relationship can be written as \[ Q(s, a) = (1 - \alpha)Q(s, a) + \alpha(r + \gamma \text{max}Q_a(s', A)),\] where $r$ is the reward of an action, $s'$ is the next state, and $A$ is all the possible actions that can be taken \cite{}.
+Additionally the algorithm uses $\epsilon$, which can be thought of the exploration parameter.
+This tells the algorithm how often to pick a random action instead of the current most beneficial one from the Q-table.
+In sum, we are learning the proper action by taking the old Q-value and adding the learned value of the immediate reward and possible future rewards.
+This algorithm also has the potential to be optimized by modifying the values of the parameters either before or during training.
+For example, the learning rate can be decreased as the knowledge base increases and the exploration parameter can be decreased as the number of trials increase.
+
+The secondary agents will be implemented using a heuristic search algorithm, such as A-star.
+The goal of these secondary agents are to mimic basic human-play, to some reasonable degree, to train the model to be able to cooperate with a human without require large amounts of human-play data, which would be infeasible to collect for this project.
+The heuristic for these agents will operate around distance (e.g. distance of other hunters to targets, a hunters distance to a target compared to other hunters).
+
+\section{Prior Work}
+
+The two solutions touched on earlier aim to solve the problems of cooperation inference and action prediction in the game.
+From the perspective of one agent, there are two questions to be answered: 1) are other agents trying to cooperate with me to catch a stag and 2) what behavior will they exhibit if they are/are not?
+Shum et al.'s model is based on Bayesian inference with an explicit causal model, which map different behaviors to different states of the group of hunters.
+Due to the explicit team hierarchy this model does not require training and was found to have strong correlations with human predictions in the experiments conducted to address the previous two questions.
+Their contribution was a novel representation for extending single-agent generative models of action understanding to the to multi-agent interaction.
+However, one of the limitations of this implementation is that it only works well for small groups, since as the number of agents grows the explicit team hierarchy also grows.
+
+Alternatively, Rabkina et al. proposed a solution called Analogical Theory of Mind.
+This process involves social reasoning called Theory of Mind \cite{Ruhl2020}, where an entity makes inferences about another’s mental state (knowledge, beliefs, preferences, desires, goals, and intentions).
+The AToM model posits that a combination of analogical processes and feedback lead to the development of theory of mind reasoning without an underlying model of cooperation.
+The AToM model is more accurate than the Bayesian model at most time stamps and does not require a predefined underlying hierarchy of team cooperation.
+Furthermore, the ability to make predictions about the future actions of agents is an additional effect of reasoning about an agent’s cooperation with others.
+
+% Malmo Challenge Environment Display {Figure 2}
+\begin{figure}[ht]
+\vspace{0.5cm}
+\centering
+\caption{Microsoft Malmo Platform PigChase environment. Left: actual 3D rendering in the Mamlo Platform. Right: symbolic representation of agent and pig on the map.}
+\label{Figure:2}
+\end{figure}
+
+In addition to these models that utilize cognitive architectures for their reasoning, there are some models that use deep learning instead as part of the growing application of deep learning models in RL \cite{Nica2017}.
+Arulkumaran et al. created a model that used the REINFORCE algorithm to create a 4 layer convolutional neural network \cite{Arulkumaran2017, Williams1992}.
+They began by "pre-training" on an PigChase Replica Environment, a domain which approximated the Malmo-Challenge environment and was used to generate large batches of episodes for training.
+Then they trained in the Malmo-Challenge environment using batches of 128 episodes and used the mean discounted return, for that particular time step in the game, as their evaluation metric.
+Their resulting model was able to outperform a A-start heuristic, as expected, and solve the puzzle.
+The significant question to consider from such a research project is the transferability of their model to different domains and how it's flexibility and performance compares to different models, such as Q-learning.
+
+\section{Methods and Evaluation Metrics}
+
+This project aims to create a RL mode for comparison for the AToM model using Q-learning with four additional factors to Pig Chase: 1) replacing the low-reward target of quitting with hares, 2) implementing the game with three hunters, two hares, and two stags, 3) the ability for the secondary agent to seek the low-reward targets and 4) using a 5x7 grid world.
+
+First idea would be to implement a Q-learning algorithm like the taxi tutorial.
+
+\section{Ethical Considerations}
+
+Think about what the research is and the goals of the project, particularly the social goals. If the goals are still dealing with people, there will be various cultural and racial considerations to be made. This is built on the assumption that the project is focused on robot-human interaction. However, if this is built on robot-robot cooperation then it doesn’t matter. You can also make a simplified model of a person, defined as a sequence of events that can be skipped through. Also need to consider how that agent is going to perform with the desired player given the testing player, if it trains with a RL agent can it play with a human agent.
+
+\section{Timeline}
+
+The first step is going to be doing more research around reinforcement learning, especially in stag-hunt.
+So far there have been quite a few resources for both single and mult-agent stag-hunt using reinforcement learning so finding which algorithm will work best for this project will be key.
+After the Occidental College URC program begins, I plan to begin doing this research in tandem to my other role on the parent project.
+Most of the summer will mainly consist of this research so that in the fall the project has a clear direction.
+In May I plan to learn more about the existing models of the project and how the new implementation may account for some gap in functionality or theory.
+June will likely then be reserved for researching models I would want to build myself, which involves loosely designing the model I choose in terms of high-level implementation.
+This phase of the project will be building the prior work that has been done in terms of stag-hunt, reinforcement learning, or multi-agent games.
+In July I plan to continue designing the model and developing the kind of technical information I may need.
+Additionally, this time period of high- to mid-level design would provide a good opportunity to start putting together a list of resources needed by the project, i.e. are there any computational tools I might need to request in the fall?
+The semester starts in August so I would like to finish the design of the model in order to have it ready to implement in September.
+This phase revolves around creating the specific methods I'm using in my implementation.
+In September I plan to finish implementing the model and start trying to improve it, e.g. optimizing the parameters.
+October will consist of evaluating the model and gaining insight into the performance of the model and how well it meets the goals of my comprehensive project and the parent project.
+The last two months will involve any needed refactoring and preparing for presentations.
+
+
+\printbibliography
+
+\end{document}

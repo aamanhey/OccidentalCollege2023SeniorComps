@@ -9,7 +9,7 @@
 
 @misc{Shum2019,
   author = {Shum, M. and Kleiman-Weiner, M. and Littman, M. L. and Tenenbaum, J. B.},
-  month = {July},
+  month = Jul,
   year = 2019,
   title = {Theory of minds: Understanding behavior in groups through inverse planning},
   publisher = {In Proceedings of the AAAI Conference on Artificial Intelligence},
@@ -32,7 +32,157 @@
   url = {https://www.simplypsychology.org/theory-of-mind.html}
 }
 
-@misc{Gym,
-  title = {OpenAi Gym}
+@misc{GymDocs,
+  title = {OpenAi Gym Docs},
   url = {https://gym.openai.com/}
+}
+
+@article{Brockman2016,
+  title={OpenAI gym},
+  author={Brockman, Greg and Cheung, Vicki and Pettersson, Ludwig and Schneider, Jonas and Schulman, John and Tang, Jie and Zaremba, Wojciech},
+  journal={arXiv preprint arXiv:1606.01540},
+  year={2016}
+}
+
+@article{Volodymyr2013,
+  author    = {Volodymyr Mnih and
+               Koray Kavukcuoglu and
+               David Silver and
+               Alex Graves and
+               Ioannis Antonoglou and
+               Daan Wierstra and
+               Martin A. Riedmiller},
+  title     = {Playing Atari with Deep Reinforcement Learning},
+  journal   = {CoRR},
+  volume    = {abs/1312.5602},
+  year      = {2013},
+  url       = {http://arxiv.org/abs/1312.5602},
+  eprinttype = {arXiv},
+  eprint    = {1312.5602},
+  timestamp = {Mon, 13 Aug 2018 16:47:42 +0200},
+  biburl    = {https://dblp.org/rec/journals/corr/MnihKSGAWR13.bib},
+  bibsource = {dblp computer science bibliography, https://dblp.org}
+}
+
+@misc{Skyrms2001,
+  title = {The Stag Hunt},
+  author = {Skyrms, Brian},
+  month = Mar,
+  year = {2001},
+  conference = {Pacific Division of the American Philosophical Association},
+  url = {https://www.socsci.uci.edu/~bskyrms/bio/papers/StagHunt.pdf}
+}
+
+@article{Xiong2018,
+  title = {HogRider: Champion Agent of Microsoft Malmo Collaborative AI Challenge},
+  volume={32},
+  url={https://ojs.aaai.org/index.php/AAAI/article/view/11581},
+  abstractNote={ &lt;p&gt; It has been an open challenge for self-interested agents to make optimal sequential decisions in complex multiagent systems, where agents might achieve higher utility via collaboration. The Microsoft Malmo Collaborative AI Challenge (MCAC), which is designed to encourage research relating to various problems in Collaborative AI, takes the form of a Minecraft mini-game where players might work together to catch a pig or deviate from cooperation, for pursuing high scores to win the challenge. Various characteristics, such as complex interactions among agents, uncertainties, sequential decision making and limited learning trials all make it extremely challenging to find effective strategies. We present HogRider---the champion agent of MCAC in 2017 out of 81 teams from 26 countries. One key innovation of HogRider is a generalized agent type hypothesis framework to identify the behavior model of the other agents, which is demonstrated to be robust to observation uncertainty. On top of that, a second key innovation is a novel Q-learning approach to learn effective policies against each type of the collaborating agents. Various ideas are proposed to adapt traditional Q-learning to handle complexities in the challenge, including state-action abstraction to reduce problem scale, a warm start approach using human reasoning for addressing limited learning trials, and an active greedy strategy to balance exploitation-exploration. Challenge results show that HogRider outperforms all the other teams by a significant edge, in terms of both optimality and stability. &lt;/p&gt; },
+  number={1}, journal={Proceedings of the AAAI Conference on Artificial Intelligence},
+  author={Xiong, Yanhai and Chen, Haipeng and Zhao, Mengchen and An, Bo},
+  year={2018},
+  month=Apr
+}
+
+@misc{Katja2017,
+  title = {The Malmo Collaborative AI Challenge},
+  month = Apr,
+  year = {2017},
+  author = {Katja Hofmann},
+  publisher = {Microsoft Research Cambridge},
+  url = {https://github.com/Microsoft/malmo-challenge}
+}
+
+@misc{Johnson2016,
+  author = {Johnson, M. and Hofmann, K. and Hutton, T. and Bignell, D.},
+  year = {2016},
+  title = {The Malmo Platform for Artificial Intelligence Experimentation},
+  publisher = {Proc. 25th International Joint Conference on Artificial Intelligence},
+  journal = {AAAI Press},
+  city = {Palo Alto},
+  state = {California},
+  country = {USA}
+}
+
+@InCollection{Kuhn2019,
+	author       =	{Kuhn, Steven},
+	title        =	{{Prisoner’s Dilemma}},
+	booktitle    =	{The {Stanford} Encyclopedia of Philosophy},
+	editor       =	{Edward N. Zalta},
+	howpublished =	{\url{https://plato.stanford.edu/archives/win2019/entries/prisoner-dilemma/}},
+	year         =	{2019},
+	edition      =	{{W}inter 2019},
+	publisher    =	{Metaphysics Research Lab, Stanford University}
+}
+
+@misc{Li2014,
+  title = {Strategies in the Stochastic Iterated Prisoner's Dilemma},
+  author = {Li, Siweli},
+  year = {2014},
+  url = {http://math.uchicago.edu/~may/REU2014/REUPapers/Li,Siwei.pdf}
+}
+
+@article{Padakandla2021,
+  author = {Padakandla, Sindhu},
+  title = {A Survey of Reinforcement Learning Algorithms for Dynamically Varying Environments},
+  year = {2021},
+  issue_date = {July 2022},
+  publisher = {Association for Computing Machinery},
+  address = {New York, NY, USA},
+  volume = {54},
+  number = {6},
+  issn = {0360-0300},
+  url = {https://doi.org/10.1145/3459991},
+  doi = {10.1145/3459991},
+  abstract = {Reinforcement learning (RL) algorithms find applications in inventory control, recommender systems, vehicular traffic management, cloud computing, and robotics. The real-world complications arising in these domains makes them difficult to solve with the basic assumptions underlying classical RL algorithms. RL agents in these applications often need to react and adapt to changing operating conditions. A significant part of research on single-agent RL techniques focuses on developing algorithms when the underlying assumption of stationary environment model is relaxed. This article provides a survey of RL methods developed for handling dynamically varying environment models. The goal of methods not limited by the stationarity assumption is to help autonomous agents adapt to varying operating conditions. This is possible either by minimizing the rewards lost during learning by RL agent or by finding a suitable policy for the RL agent that leads to efficient operation of the underlying system. A representative collection of these algorithms is discussed in detail in this work along with their categorization and their relative merits and demerits. Additionally, we also review works that are tailored to application domains. Finally, we discuss future enhancements for this field.},
+  journal = {ACM Comput. Surv.},
+  month = {jul},
+  articleno = {127},
+  numpages = {25},
+  keywords = {sequential decision-making, meta-learning, non-stationary environments, Markov decision processes, Reinforcement learning, regret computation, context detection}
+}
+
+@article{Kaelbling1996,
+  title={Reinforcement Learning: A Survey},
+  author={Kaelbling, Leslie Pack and Littman, Michael L. and Moore, Andrew W.},
+  journal={J. Artif. Intell. Res.},
+  year={1996},
+  volume={4},
+  pages={237-285}
+}
+
+@article{Arulkumaran2017,
+  title={A Brief Survey of Deep Reinforcement Learning},
+  author={Kai Arulkumaran and Marc Peter Deisenroth and Miles Brundage and Anil Anthony Bharath},
+  journal={ArXiv},
+  year={2017},
+  volume={abs/1708.05866}
+}
+
+@article{Nica2017,
+  title={Learning to Maximize Return in a Stag Hunt Collaborative Scenario through Deep Reinforcement Learning},
+  author={Nica, Andrei Cristian and Berariu, Tudor and Gogianu, Florin and Florea, Adina Magda},
+  journal={2017 19th International Symposium on Symbolic and Numeric Algorithms for Scientific Computing (SYNASC)},
+  year={2017},
+  pages={188-195}
+}
+
+
+@article{Williams1992,
+	abstract = {This article presents a general class of associative reinforcement learning algorithms for connectionist networks containing stochastic units. These algorithms, called REINFORCE algorithms, are shown to make weight adjustments in a direction that lies along the gradient of expected reinforcement in both immediate-reinforcement tasks and certain limited forms of delayed-reinforcement tasks, and they do this without explicitly computing gradient estimates or even storing information from which such estimates could be computed. Specific examples of such algorithms are presented, some of which bear a close relationship to certain existing algorithms while others are novel but potentially interesting in their own right. Also given are results that show how such algorithms can be naturally integrated with backpropagation. We close with a brief discussion of a number of additional issues surrounding the use of such algorithms, including what is known about their limiting behaviors as well as further considerations that might be used to help develop similar but potentially more powerful reinforcement learning algorithms.},
+	author = {Williams, Ronald J. },
+	date = {1992/05/01},
+	date-added = {2022-05-09 02:13:19 -0700},
+	date-modified = {2022-05-09 02:13:19 -0700},
+	doi = {10.1007/BF00992696},
+	id = {Williams1992},
+	isbn = {1573-0565},
+	journal = {Machine Learning},
+	number = {3},
+	pages = {229--256},
+	title = {Simple statistical gradient-following algorithms for connectionist reinforcement learning},
+	url = {https://doi.org/10.1007/BF00992696},
+	volume = {8},
+	year = {1992},
+	bdsk-url-1 = {https://doi.org/10.1007/BF00992696}
 }
